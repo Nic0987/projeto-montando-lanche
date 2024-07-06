@@ -67,44 +67,68 @@
                         </div>
                     </div>
                     <!-- FIM TIPO DO PÃO -->
+
+                    <!-- SALADA -->
+                    <div class="row-mt-2">
+                        <div>
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-header">
+                                        Salada
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="alface"
+                                                v-model="inputSalada">
+                                            <label class="form-check-label"> Alface </label>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
 
             </div>
 
+            <!-- INSTANCIA VUE -->
+            <script>
+                const vm = new Vue({
+                    el: '#app',
 
-        </div>
+                    data: { // atributos // propriedades
+                        inputTipoPao: '',
+                        inputSalada: [],
 
+                    },
 
-    </div>
+                    computed: { // propriedades computadas // reativos
+                        pao() {
+                            switch (this.inputTipoPao) {
+                                case 'gergelim':
+                                    return ['imagens/pao_gergelim_superior.png', 'imagens/pao_gergelim_inferior.png']
+                                case 'australiano':
+                                    return ['imagens/pao_australiano_superior.png', 'imagens/pao_australiano_inferior.png']
+                                default:
+                                    return ['imagens/padrao/pao_superior.png', 'imagens/padrao/pao_inferior.png']
+                            }
 
-    <!-- INSTANCIA VUE -->
-    <script>
-        const vm = new Vue({
-            el: '#app',
+                        },
 
-            data: { // atributos // propriedades
-                inputTipoPao: '',
+                        alface () {
+                            if(this.inputSalada.includes('alface')) {
+                                return 'imagens/alface.png'
+                            }
+                            return 'imagens/padrao/alface.png'
+                        }
 
-            },
+                    },
 
-            computed: { // propriedades computadas // reativos
-                pao() {
-                    switch (this.inputTipoPao) {
-                        case 'gergelim':
-                            return ['imagens/pao_gergelim_superior.png', 'imagens/pao_gergelim_inferior.png']
-                        case 'australiano':
-                            return ['imagens/pao_australiano_superior.png', 'imagens/pao_australiano_inferior.png']
-                        default: 
-                            return ['imagens/padrao/pao_superior.png', 'imagens/padrao/pao_inferior.png']
-                    }
+                })
 
-                },
-
-            },
-
-        })
-
-    </script>
+            </script>
 
 </body>
 
